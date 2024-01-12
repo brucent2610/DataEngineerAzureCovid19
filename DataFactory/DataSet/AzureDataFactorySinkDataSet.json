@@ -1,0 +1,19 @@
+{
+    "linkedServiceName": {
+        "referenceName": "<LinkedServiceName>",
+        "type": "LinkedServiceReference"
+    },
+    "annotations": [],
+    "type": "DelimitedText",
+    "typeProperties": {
+        "location": {
+            "type": "AzureBlobStorageLocation",
+            "fileName": "population_by_age.tsv.gz",
+            "container": "population"
+        },
+        "columnDelimiter": ",",
+        "escapeChar": "\\",
+        "firstRowAsHeader": true,
+        "quoteChar": "\""
+    }
+}

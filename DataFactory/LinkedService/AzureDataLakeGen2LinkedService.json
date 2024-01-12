@@ -1,6 +1,10 @@
 {
-    "type": "AzureDataLakeStorageGen2",
+    "type": "AzureBlobFS",
     "typeProperties": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net"
+        "url": "https://<AzureDataLakeGen2Name>.dfs.core.windows.net", 
+        "accountkey": { 
+            "type": "SecureString", 
+            "value": "<AccountKey>" 
+        }
     }
 }
