@@ -1,6 +1,6 @@
 {
     "linkedServiceName": {
-        "referenceName": "<LinkedServiceName>",
+        "referenceName": "ls_ablob_covidreportingsa",
         "type": "LinkedServiceReference"
     },
     "annotations": [],

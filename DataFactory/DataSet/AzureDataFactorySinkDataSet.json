@@ -1,19 +1,20 @@
 {
     "linkedServiceName": {
-        "referenceName": "<LinkedServiceName>",
+        "referenceName": "ls_adls_covidreportingdl",
         "type": "LinkedServiceReference"
     },
     "annotations": [],
     "type": "DelimitedText",
     "typeProperties": {
         "location": {
-            "type": "AzureBlobStorageLocation",
-            "fileName": "population_by_age.tsv.gz",
-            "container": "population"
+            "type": "AzureBlobFSLocation",
+            "fileName": "population_by_age.tsv",
+            "fileSystem": "raw"
         },
-        "columnDelimiter": ",",
+        "columnDelimiter": "\t",
         "escapeChar": "\\",
         "firstRowAsHeader": true,
         "quoteChar": "\""
-    }
+    },
+    "schema": []
 }
