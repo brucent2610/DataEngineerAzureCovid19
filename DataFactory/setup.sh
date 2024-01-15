@@ -15,3 +15,8 @@ az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $A
 
 az datafactory pipeline create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryPipeline --pipeline @Pipeline/AzureDataFactoryCopyPipeline.json
 az datafactory trigger create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTrigger --properties @Pipeline/AzureDataFactoryTriggerEvent.json
+
+
+AzureStorageLinkedServiceOpenData=ls_http_opendata_ecdc_europa_eu
+
+az datafactory linked-service create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --linked-service-name $AzureStorageLinkedServiceOpenData --properties @LinkedService/AzureStorageLinkedServiceOpenData.json
