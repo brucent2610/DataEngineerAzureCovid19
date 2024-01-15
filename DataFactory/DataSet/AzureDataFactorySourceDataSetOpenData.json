@@ -1,16 +1,33 @@
 {
-    "name": "ds_cases_deaths_raw_csv_http",
+    "name": "ds_ecdc_raw_csv_http",
     "properties": {
         "linkedServiceName": {
             "referenceName": "ls_http_opendata_ecdc_europa_eu",
-            "type": "LinkedServiceReference"
+            "type": "LinkedServiceReference",
+            "parameters": {
+                "sourceBaseUrl": {
+                    "value": "@dataset().baseUrl",
+                    "type": "Expression"
+                }
+            }
+        },
+        "parameters": {
+            "relativeUrl": {
+                "type": "string"
+            },
+            "baseUrl": {
+                "type": "string"
+            }
         },
         "annotations": [],
         "type": "DelimitedText",
         "typeProperties": {
             "location": {
                 "type": "HttpServerLocation",
-                "relativeUrl": "brucent2610/DataEngineerAzureCovid19/main/Sources/cases_deaths.csv"
+                "relativeUrl": {
+                    "value": "@dataset().relativeUrl",
+                    "type": "Expression"
+                }
             },
             "columnDelimiter": ",",
             "escapeChar": "\\",

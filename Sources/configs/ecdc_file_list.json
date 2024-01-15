@@ -1,7 +1,7 @@
 [
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
-        "sourceRelativeURL":"cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv",
+        "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/cases_deaths.csv",
         "sinkFileName":"cases_deaths.csv"
     },
     {
@@ -11,12 +11,12 @@
     },
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
-        "sourceRelativeURL":"cloudboxacademy/covid19/raw/main/ecdc_data/testing.csv",
+        "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/testing.csv",
         "sinkFileName":"testing.csv"
     },
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
-        "sourceRelativeURL":"cloudboxacademy/covid19/raw/main/ecdc_data/country_response.csv",
+        "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/country_response.csv",
         "sinkFileName":"country_response.csv"
     }
 ]
