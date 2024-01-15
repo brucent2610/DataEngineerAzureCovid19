@@ -27,11 +27,14 @@ az sql db create --resource-group $RESOURCE_GROUP --server $DATABASE_SQL_SERVER_
 
 # Data Ingestion from Azure Blob
 STORAGE_ACCOUNT_CONTAINER_NAME=population
+STORAGE_ACCOUNT_CONTAINER_CONFIGS_NAME=configs
 SOURCE_FILE_NAME=population_by_age.tsv.gz
 
 DATALAKE_STORAGE_GEN2_CONTAINER_NAME=raw
 
 az storage container create --account-name $STORAGE_ACCOUNT_NAME --name $STORAGE_ACCOUNT_CONTAINER_NAME --auth-mode login
+az storage container create --account-name $STORAGE_ACCOUNT_NAME --name $STORAGE_ACCOUNT_CONTAINER_CONFIGS_NAME --auth-mode login
 az storage blob upload --account-name $STORAGE_ACCOUNT_NAME --container-name $STORAGE_ACCOUNT_CONTAINER_NAME --name $SOURCE_FILE_NAME --file $SOURCE_FILE_NAME --auth-mode login
 
 az storage container create --account-name $DATALAKE_STORAGE_GEN2_NAME --name $DATALAKE_STORAGE_GEN2_CONTAINER_NAME --auth-mode login
+

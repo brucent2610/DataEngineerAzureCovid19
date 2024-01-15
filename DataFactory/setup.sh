@@ -18,5 +18,11 @@ az datafactory trigger create --resource-group $RESOURCE_GROUP --factory-name $F
 
 
 AzureStorageLinkedServiceOpenData=ls_http_opendata_ecdc_europa_eu
+AzureDataFactorySourceDataSetOpenData=ds_cases_deaths_raw_csv_http
+
+AzureDataFactorySinkDataSetOpenData=ds_cases_deaths_raw_csv_dl
 
 az datafactory linked-service create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --linked-service-name $AzureStorageLinkedServiceOpenData --properties @LinkedService/AzureStorageLinkedServiceOpenData.json
+
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySourceDataSet --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenData.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySinkDataSetOpenData --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySinkDataSetOpenData.json

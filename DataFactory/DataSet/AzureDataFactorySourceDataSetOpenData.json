@@ -1,0 +1,22 @@
+{
+    "name": "ds_cases_deaths_raw_csv_http",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_http_opendata_ecdc_europa_eu",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "brucent2610/DataEngineerAzureCovid19/main/Sources/cases_deaths.csv"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+        },
+        "schema": []
+    }
+}
