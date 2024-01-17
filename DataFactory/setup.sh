@@ -16,6 +16,7 @@ az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $A
 az datafactory trigger create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTrigger --properties @Pipeline/AzureDataFactoryTriggerEvent.json
 az datafactory pipeline create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryPipeline --pipeline @Pipeline/AzureDataFactoryCopyPipeline.json
 
+################################################################################################
 
 AzureStorageLinkedServiceOpenData=ls_http_opendata_ecdc_europa_eu
 AzureDataFactorySourceDataSetOpenData=ds_cases_deaths_raw_csv_http
@@ -29,8 +30,27 @@ AzureDataFactoryOpenDataTrigger=tr_ingest_ecdc_data
 az datafactory linked-service create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --linked-service-name $AzureStorageLinkedServiceOpenData --properties @LinkedService/AzureStorageLinkedServiceOpenData.json
 
 az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryConfigDataSet --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactoryConfigDataSetOpenData.json
-az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySourceDataSet --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenData.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySourceDataSetOpenData --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenData.json
 az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySinkDataSetOpenData --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySinkDataSetOpenData.json
 
 az datafactory trigger create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryOpenDataTrigger --properties @Pipeline/AzureDataFactoryOpenDataTriggerEvent.json
 az datafactory pipeline create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryOpenDataPipeline --pipeline @Pipeline/AzureDataFactoryCopyPipelineOpenData.json
+
+################################################################################################
+
+AzureDataFactoryLookupDataSetOpenDataTransform=ds_country_lookup
+AzureDataFactorySourceDataSetOpenDataTransform=ds_raw_cases_and_deaths
+AzureDataFactoryProcessedDataSetOpenDataTransform=ds_processed_cases_and_deaths
+
+AzureDataFactoryTransformOpenDataDataFlow=df_transform_cases_deaths
+AzureDataFactoryTransformOpenDataDataFlowType=MappingDataFlow
+
+AzureDataFactoryTransformOpenDataPipeline=pl_process_cases_and_deaths_data
+
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryLookupDataSetOpenDataTransform --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenDataTransform.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySourceDataSetOpenDataTransform --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenDataTransform.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryProcessedDataSetOpenDataTransform --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactoryProcessedDataSetOpenDataTransform.json
+
+az datafactory data-flow create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTransformOpenDataDataFlow -t $AzureDataFactoryTransformOpenDataDataFlowType --properties --properties @DataFlow/AzureDataFactoryTransformDataFlowOpenData.json
+az datafactory pipeline create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTransformOpenDataPipeline --pipeline @Pipeline/AzureDataFactoryTransformPipelineOpenData.json
+
