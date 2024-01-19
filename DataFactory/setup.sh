@@ -54,3 +54,21 @@ az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $A
 az datafactory data-flow create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTransformOpenDataDataFlow -t $AzureDataFactoryTransformOpenDataDataFlowType --properties --properties @DataFlow/AzureDataFactoryTransformDataFlowOpenData.json
 az datafactory pipeline create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTransformOpenDataPipeline --pipeline @Pipeline/AzureDataFactoryTransformPipelineOpenData.json
 
+################################################################################################
+AzureDataFactoryLookupDataSetOpenDataTransform2=ds_dim_date_lookup
+AzureDataFactorySourceDataSetOpenDataTransform2=ds_raw_hospital_admission
+
+AzureDataFactoryProcessedDataSetOpenDataTransform2Daily=ds_processed_hospital_admission_daily
+AzureDataFactoryProcessedDataSetOpenDataTransform2Weekly=ds_processed_cases_and_deaths
+
+AzureDataFactoryTransformOpenDataDataFlow2=df_transform_hospital_admissions
+AzureDataFactoryTransformOpenDataDataFlow2Type=MappingDataFlow
+
+AzureDataFactoryTransformOpenDataPipeline2=pl_process_hosipital_admission_data
+
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryLookupDataSetOpenDataTransform2 --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenDataTransform.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactorySourceDataSetOpenDataTransform2 --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactorySourceDataSetOpenDataTransform2.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryProcessedDataSetOpenDataTransform2Daily --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactoryProcessedDataSetOpenDataTransform.json
+az datafactory dataset create --resource-group $RESOURCE_GROUP --dataset-name $AzureDataFactoryProcessedDataSetOpenDataTransform2Weekly --factory-name $FACTORY_NAME --properties @DataSet/AzureDataFactoryProcessedDataSetOpenDataTransform.json
+
+az datafactory data-flow create --resource-group $RESOURCE_GROUP --factory-name $FACTORY_NAME --name $AzureDataFactoryTransformOpenDataDataFlow2 -t $AzureDataFactoryTransformOpenDataDataFlow2Type --properties --properties @DataFlow/AzureDataFactoryTransformDataFlowOpenData2.json
