@@ -2,21 +2,21 @@
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
         "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/cases_deaths.csv",
-        "sinkFileName":"cases_deaths.csv"
+        "sinkFileName":"cases_deaths/cases_deaths.csv"
     },
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
         "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/hospital_admissions.csv",
-        "sinkFileName":"hospital_admissions.csv"
+        "sinkFileName":"hospital_admissions/hospital_admissions.csv"
     },
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
         "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/testing.csv",
-        "sinkFileName":"testing.csv"
+        "sinkFileName":"testing/testing.csv"
     },
     {
         "sourceBaseURL":"https://raw.githubusercontent.com",
         "sourceRelativeURL":"brucent2610/DataEngineerAzureCovid19/main/Sources/country_response.csv",
-        "sinkFileName":"country_response.csv"
+        "sinkFileName":"country_response/country_response.csv"
     }
 ]
